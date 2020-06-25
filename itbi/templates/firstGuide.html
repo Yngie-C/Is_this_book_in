@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0, user-scalable=no, target-densitydpi=medium-dpi" />
+    <title>처음 사용자를 위한 가이드</title>
+    <style>
+        @font-face { font-family: 'MapoPeacefull'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+        @media all and (min-width:320px){ 
+            body { background-color: #A0EADE; }
+            * {margin: 0; padding: 0}
+            a { text-decoration: none; color: #384E77; padding: 0 10px; font-size: 16px; }
+            #whiteImg { position: absolute; top: 17px; left: 15px; z-index: -1; border-radius: 25px; width: 350px; height: 600px;}
+            #main_head { font-size: 26px; text-align: center; font-weight: bold; color: #384E77; display: block; margin: 30px; font-family: 'MapoPeacefull'; top: 30px;}
+            .forStart { border-style: outset;}
+            #firstGuide { font-size: 16px; font-family: 'MapoPeacefull'; position:relative; margin: 0 15px 0 20px; top: -20px; text-align: center;}
+            #Img1 { width: 250px; height: 30px; }
+            #Img2 { width: 330px; height: 110px; }
+            #aladin { background-color: #A0EADE; color:#384E77; font-family: 'MapoPeacefull'; border-style: none; -webkit-appearance:none; -webkit-border-radius: 5;  padding: 6px; font-size: 16px; border-radius: 10px;  margin: 6px 0;}
+            h3 { margin: 10px 0 0 0;}
+        }
+        
+        @media all and (min-width:768px){ 
+            body { background-color: #A0EADE; }
+            * {margin: 0; padding: 0}
+            a { text-decoration: none; color: #384E77; padding: 0 10px; font-size: 16px; }
+            #whiteImg { position: absolute; top: 20px; left: 20px; z-index: -1; border-radius: 25px; width: 760px; height: 760px;}
+            #main_head { font-size: 50px; text-align: center; font-weight: bold; color: #384E77; display: block; margin: 30px 20px 0 0; font-family: 'MapoPeacefull'; }
+            .forStart { border-style: outset;}
+            #firstGuide { font-size: 20px; margin: 0 0 0 10px; font-family: 'MapoPeacefull'; position:relative; margin: 0 15px 0 30px; top: 20px; text-align: center;}
+            #Img1 { width: 500px; height: 50px; }
+            #Img2 { width: 650px; height: 180px; }
+            #aladin { background-color: #A0EADE; color:#384E77; font-family: 'MapoPeacefull'; border-style: none; padding: 10px; font-size: 20px; border-radius: 10px; margin: 10px 0;}
+        }
+        @media all and (min-width:1024px){ 
+        }
+    </style>
+</head>
+<body onload="window.resizeTo(800,900)" onresize="window.resizeTo(800,900)">
+    <img src="{{ url_for('static', filename='image/white.jpeg') }}" id='whiteImg'>
+    <h1 id='main_head'>처음 사용자를 위한 가이드</h1>
+    <div id='firstGuide'>
+        <div>
+            <p><b>"책 들어왔어?"</b>는 사용자가 설정한 키워드에 맞춰</p>
+            <p>자동으로 중고매장의 책 재고여부를 편리하게 확인하기 위한 도우미입니다.</p>
+            <p>알라딘에서 책 이름이나 저자 등을 검색하셔서</p>
+            <p>찾고자 하는 책의 알맞은 키워드를 입력 해 주시면 정확한 결과를 받아보실 수 있습니다.</p>
+        </div>
+        <div>
+            <a href='https://www.aladin.co.kr/home/welcome.aspx' target='_black'><button id='aladin'>알라딘 홈페이지(새 창)</button></a>
+        </div>
+        <div>
+            <h3>STEP.1</h3>
+            <p>통합검색을 통해 찾고자 하는 책 검색</p>
+            <img src="{{ url_for('static', filename='image/aladin_search01.png') }}" id='Img1' class='forStart'>
+            <br>
+            <h3>STEP.2</h3>
+            <p>설정할 책의 제목 또는 저자 등의</p>
+            <p>정확한 키워드 확인</p>
+            <img src="{{ url_for('static', filename='image/aladin_search02.png') }}" id='Img2' class='forStart'>
+            <br>
+            <h3>STEP.3</h3>
+            <p>확인한 키워드 등록 후 시스템 이용</p>
+        </div>
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>

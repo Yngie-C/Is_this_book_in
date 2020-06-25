@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <!-- <link href="https://fonts.googlepis.com/css?family=Nanum+Gothic&display=swap&subset=korean" rel="stylesheet"> -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0, user-scalable=no, target-densitydpi=medium-dpi" />
+    <!-- <link rel='stylesheet' href="{{ url_for('static', filename='css/joininPage.css') }}"> -->
+    <title>책 들어왔어? 로그인 페이지</title>
+    <style>
+        @font-face { font-family: 'MapoPeacefull'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+        @media all and (min-width:320px){ 
+            body { background-color: #A0EADE;}
+            * {margin: 0; padding: 10px 0 0 0; }
+            a { text-decoration: none; color: #384E77; }
+            #questionImg { position: absolute; top: 34px; left: 20px; -webkit-border-radius: 0; width: 250px; height: 250px;}
+            #whiteImg { position: absolute; top: 17px; left: 15px; z-index: -1; border-radius: 25px; width: 345px; height: 470px;}
+            #main_head { font-size: 35px; font-weight: bold; color: #384E77; margin: 0; position: relative; top: 170px; left: 150px; font-family: 'MapoPeacefull'; width: 250px;}
+            h3 { position: relative; top: auto; left: 250px; color: white; font-family: 'MapoPeacefull'; font-size: 60px; display: none;}
+            h4 { font-size: 26px; color: white; position: relative; top: auto; left: 40px; font-family: 'MapoPeacefull'; font-size: 55px; display: none;}
+            #login_section { position: relative; padding: 30px 0 0 0; top: 170px;; left: 20px;}
+            form { display: block;}
+            .inputBox { font-size: 28px; color: #384E77;  font-weight: bold; font-family: 'MapoPeacefull'; position: relative; left: 10px;}
+            .inputBox:nth-child(1) { margin: 0 0 0 28px;}
+            #id, #pwd { position: relative; border-radius: 10px; margin: 0 10px; background-color: #fffed3; text-align: center; font-size: 20px; width: 180px; left: 10px;}
+            button, input[type='submit'] { padding: 5px; border-radius: 15px; margin: 10px 10px 0 0; font-weight: bold; background-color: #A0EADE; border-style: none; color: #384E77; border-style: none; -webkit-border-radius: 5; font-family: 'MapoPeacefull';}
+            input[type='submit'] { position: absolute; left: 30px; top: 140px; width: 120px; font-size: 22px; height: 50px; -webkit-appearance:none; -webkit-border-radius: 5;}
+            button { position: absolute; left: 180px; top: 140px; width: 120px; height: 50px; font-size: 22px; }
+            button a { color: #384E77; }
+
+
+            aside {position: fixed; top: 490px; left: 50px; margin: 0; font-size: 16px; text-align: center; color: #384E77; font-family: 'MapoPeacefull';}
+            #flip { font-size: 18px; background-color: white; border-radius: 10px; padding: 5px; position: fixed; top: 560px; left: 130px;}
+        }
+        
+        @media all and (min-width:768px){ 
+        
+            /* 스타일 지정 부분*/
+        }
+        @media all and (min-width:1024px){ 
+            body { background-color: #A0EADE; width: 921px;}
+            * {margin: 0; padding: 0 }
+            a { text-decoration: none; color: #384E77; }
+            #questionImg { position: absolute; top: 50px; left: 220px; width: 800px; height: 800px;}
+            #whiteImg { position: absolute; top: 20px; left: 200px; z-index: -1; border-radius: 25px; width: 1200px; height: 900px;}
+            #main_head { font-size: 100px; font-weight: bold; color: #384E77; margin: 50px 50px 0 50px; position: relative; top: 330px; left: 750px; font-family: 'MapoPeacefull'; width: 600px;}
+            h3 { position: relative; top: 330px; left: 950px; color: #384E77; font-family: 'MapoPeacefull'; font-size: 30px; display: block;}
+            h4 { font-size: 40px; color: darkgray; position: relative; top: 350px; left: 720px; font-family: 'MapoPeacefull'; display: block;}
+            #login_section { position: relative; padding: 30px 0 0 0; top: 400px; left: 700px;}
+            form { display: inline-flex;}
+            .inputBox { font-size: 28px; color: #384E77; font-family: 'MapoPeacefull'; position: relative; left: -80px;}
+            .inputBox:nth-child(1) { margin: 0 0 0 30px;}
+            #id, #pwd { position: relative; border-radius: 5px; margin: 0 10px; background-color: #fffed3; text-align: center; font-size: 15px; width: 250px; left: 30px; left: -80px;}
+            button, input[type='submit'] { padding: 5px;  border-radius: 5px; margin: 10px 10px 0 0; font-weight: bold; background-color: #A0EADE; border-style: none; color: #384E77; font-family: 'MapoPeacefull';}
+            input[type='submit'] { position: absolute; left: 180px; top: 80px; width: 120px; height: 60px; font-size: 28px; background-color: #A0EADE; border-style: none;}
+            button { position: absolute; left: 370px; top: 80px; width: 120px; height: 60px; font-size: 28px;}
+            button a { color: #384E77;}
+
+            aside {position: fixed; top: 860px; left: 800px; margin: 0; font-size: 20px; text-align: center; color: #384E77; font-family: 'MapoPeacefull';}
+            #flip { font-size: 20px; background-color: #A0EADE; border-radius: 10px; position: fixed; top: 840px; left: 1140px;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='image/question.png') }}" width="600" height="600" id='questionImg'>
+        <img src="{{ url_for('static', filename='image/white.jpeg') }}" id='whiteImg'>
+        <h1 id='main_head'>책 들어와써?</h1>
+        <h3>(Is this book in?)</h3>
+        <h4>알라딘 중고매장 입고여부 확인 시스템</h4>
+        <!-- <img src="{{ url_for('static', filename='image/book03.jpg') }}" id='bg_desktop'>
+        <img src="{{ url_for('static', filename='image/book05.jpg') }}" id='bg_mobile'> -->
+    </header>
+    <nav>
+
+    </nav>
+    <section id='login_section'>
+        <div>
+            <form action='#' method='POST'>
+                <label for='id' class='inputBox'>아이디</label>
+                <input type='text' id='id' name='userid'  placeholder='아이디 입력'>
+                <br>
+                <label for='pwd' class='inputBox'>휴대전화</label>
+                <input type='text' id='pwd' name='pwd' placeholder='번호 입력'>
+                <br>
+                <input type='submit' value='로그인'>
+            </form>
+        </div>
+        <div>
+            <button><a href="{{ url_for('joinon') }}">회원가입</a></button>
+        </div>
+    </section>
+    <aside>
+        <div>
+            <h2>처음 사용자를 위한 가이드</h2>
+            <a href="{{url_for('firstguide')}}" onclick="window.open(this.href, 'html5','width=800, height=900');return false;"><button id="flip">사용법 보기</button></a>
+        </div>
+    </aside>
+    <footer>
+
+    </footer>
+    <script>
+        if ('{{msg}}' != ''){
+            alert('{{ msg }}'); 
+        }
+
+        function doNotReload(){
+            if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
+                event.keyCode = 0;
+                event.cancelBubble = true;
+                event.returnValue = false;
+            }
+        }
+        document.onkeydown = doNotReload;
+    </script>
+</body>
+{% endblock %}

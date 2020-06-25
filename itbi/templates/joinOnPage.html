@@ -1,0 +1,113 @@
+{% extends "joininPage.html" %}
+{% block content %}
+<head>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean" rel="stylesheet"> -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0, user-scalable=no, target-densitydpi=medium-dpi" />
+    <!-- <link rel='stylesheet' href="{{ url_for('static', filename='css/joinOnPage.css') }}"> -->
+    <title>회원가입</title>
+    <style>
+        @font-face { font-family: 'MapoPeacefull'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+        @media all and (min-width:320px){ 
+            body { background-color: #ffffff;}
+            * {margin: 0; padding: 0}
+            a { text-decoration: none; color: #384E77; padding: 10px; font-size: 25px;  }
+            #main_head { font-size: 40px; text-align: center; color: #384E77; margin: 20px 0 0 0; font-family: 'MapoPeacefull'; text-shadow: 3px 3px #A0EADE ; font-weight: bold;}
+            #idpwd { margin: 10px; width: 320px;  padding: 20px; display: block; border-style: hidden; font-family: 'MapoPeacefull';}
+            #id, #pwd { margin: 5px 10px 5px 0; padding: 10px 40px; display: block; width: 200px; background-color: #fffed3; border-radius: 15px; font-size: 22px;}
+            .inputBox, p { color: #384E77; font-weight: bold; font-size: 25px; display: block;}
+            span { font-size: 20px; color: darkred; font-weight: bold; }
+            input[type='radio']{ margin: 5px 0 0 25px; font-size: 20px; transform: scale(1.2); }
+            input[type='submit'] { padding: 5px 20px 10px 5px; background-color: #A0EADE; font-size: 25px; width: 100%; height: 50px; font-family: 'MapoPeacefull'; color: #384E77; display: inline; -webkit-border-radius: 5; -webkit-appearance:none; border-style: none; border-radius: 15px;}
+            aside > #backBtn { text-align: center; display: block; position: relative; left: 0;}
+            #backBtn  button { font-size: 16px; background-color: #A0EADE; -webkit-border-radius: 5; -webkit-appearance:none; border-style: none; font-family: 'MapoPeacefull'; width: 30%; border-radius: 15px;}
+        }
+        
+        @media all and (min-width:768px){ 
+        
+            /* 스타일 지정 부분*/
+        }
+        @media all and (min-width:1024px){ 
+            body { background-color: #ffffff; width: 921px;}
+            * {margin: 0; padding: 0}
+            a { text-decoration: none; color: #384E77; padding: 0 10px; font-size: 16px; }
+            #main_head { font-size: 60px; text-align: center; color: #384E77; margin: 50px 50px 0 50px; font-family: 'MapoPeacefull'; text-shadow: 3px 3px #aee1cd ; }
+            #idpwd { margin: 20px 0 20px 33%; width: 600px;  padding: 20px; border-style: none; font-size: 28px; display: inline-block; font-family: 'MapoPeacefull';}
+            #id, #pwd { margin: 10px 20px 0 10px; padding: 5px 0; display: inline; width: 580px; background-color: #fffed3; border-radius: 10px; font-size: 24px; }
+            .inputBox, p { color: #384E77; font-weight: bold;  font-size: 28px; display: block;}
+            span { font-size: 16px; color: darkred; font-weight: bold; }
+            input[type='radio']{ margin: 0 0 0 30px; font-size: 26px; transform: scale(1.5);}
+            input[type='submit'] { padding: 5px 20px 10px 5px; background-color: #A0EADE; font-size: 40px; width: 100%; height: 70px; font-family: 'MapoPeacefull'; color: #384E77; border-style: none; border-radius: 15px;}
+            aside > #backBtn { text-align: center; display: block; position: relative; left: 17%;}
+            #backBtn  button { font-size: 22px;  background-color: #A0EADE; color: #384E77; border-style: none; font-family: 'MapoPeacefull'; width: 10%; border-radius: 15px; }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id='main_head'>회원 가입</h1>
+    </header>
+    <nav>
+
+    </nav>
+    <section>
+        <div id='idpwd'>
+            <form method='POST'>
+                <label for='id' class='inputBox'>아이디</label>
+                <input type='text' id='id' name='userid'>
+                <span>(한글 및 특수문자 불가)</span>
+                <br><br>
+                <label for='pwd' class='inputBox'>휴대전화</label>
+                <input type='text' id='pwd' name='pwd'>
+                <span>(하이픈(-) 없이 기입)</span>
+                <br><br>
+                <p>성 별</p>
+                <input type='radio' id='male' name='gender' value=1>
+                <label for='male'>남자</label>
+                <input type='radio' id='female' name='gender' value=2>
+                <label for='female'>여자</label>
+                <input type='radio' id='lgbtq' name='gender' value=3>
+                <label for='lgbtq'>LGBTQ</label>
+                <br><br>
+                <p>연 령</p>
+                <input type='radio' id='age10' name='age' value=1>
+                <label for='age10'>10대</label>
+                <input type='radio' id='age20' name='age' value=2>
+                <label for='age20'>20대</label>
+                <input type='radio' id='age30' name='age' value=3>
+                <label for='age30'>30대</label>
+                <br>
+                <input type='radio' id='age40' name='age' value=4>
+                <label for='age40'>40대</label>
+                <input type='radio' id='age50' name='age' value=5>
+                <label for='age50'>50대</label>
+                <input type='radio' id='age60' name='age' value=6>
+                <label for='age60'>60대이상</label>
+                <br><br>
+                <input type='submit' value='가입하기'>
+            </form>
+        </div>
+    </section>
+    <aside>
+        <div id='backBtn'>
+            <a href="{{ url_for('joinin') }}"><button class="buttons">뒤로가기</button></a>
+        </div>
+    </aside>
+    <footer>
+
+    </footer>
+    
+    <script>
+        function doNotReload(){
+            if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
+                event.keyCode = 0;
+                event.cancelBubble = true;
+                event.returnValue = false;
+            }
+        }
+        document.onkeydown = doNotReload;
+    </script>
+</body>
+{% endblock %}

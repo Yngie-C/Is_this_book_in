@@ -1,0 +1,217 @@
+{% extends "joininPage.html" %}
+{% block content %}
+<head>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean" rel="stylesheet"> -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0, user-scalable=no, target-densitydpi=medium-dpi" />
+    <title>메인 페이지</title>
+    <style>
+        @font-face { font-family: 'MapoPeacefull'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+        @media all and (min-width:320px){ 
+            body { background-color: #A0EADE; }
+            * {margin: 0; padding: 0}
+            a { text-decoration: none; color: #384E77; position: relative; left: 100px; top: 0;}
+            header { margin: 20px 0 0 0; }
+            #whiteImg { position: absolute; top: 17px; left: 15px; z-index: -1; border-radius: 25px; width: 345px; height: 400px;}
+            .main_head { font-size: 35px; text-align: center; font-weight: bold; color: #384E77; display: block; margin: 0 0 0 20px; font-family: 'MapoPeacefull'; position: relative; top: 0; width: 330px; }
+            .main_head:nth-child(2) { display: block;text-align: center;}
+            #keySet button { width: 160px; }
+            #logout button { width: 160px; }
+            #keySet {position:relative; left: 18px; top: 0; }
+            #logout {position: relative; left: 13px; top: 0; }
+            button { text-align: center; font-size: 18px; padding: 5px 10px; margin: 5px; border-radius: 5px; background-color: #A0EADE; display: inline; color: #384E77; border-style: none; font-family: 'MapoPeacefull'; }
+            h2 { margin: 10px 20px; font-size: 25px; color: #384E77; font-family: 'MapoPeacefull'; position: relative; width: 200px; top: 0; left: 3px;}
+            #keyword_section { visibility: hidden; padding: 0 0 0 20px; position: relative; left: 10px; top: 0; display: inline-block; width: 330px; }
+            #keyword_section * {font-family: 'MapoPeacefull';}
+            #result  * { display: inline-flex; }
+            .card { margin: 0 0 10px 10px; display: none; }
+            #noSearchResult {display: none; font-size: 20px; color: #384E77;}
+            #results {display: grid; position: absolute; top: 430px; left: 10px; }
+        }
+        
+        @media all and (min-width:768px){ 
+        
+            /* 스타일 지정 부분*/
+        }
+        @media all and (min-width:1024px){ 
+            body { background-color: #A0EADE; width: 921px;}
+            * {margin: 0; padding: 0}
+            a { text-decoration: none; color: #384E77; position: relative; left: 600px; top: -100px;}
+            header { margin: 20px 0 0 0; }
+            #whiteImg { position: absolute; top: 20px; left: 80px; z-index: -1; border-radius: 25px; width: 1450px; height: 400px;}
+            .main_head { font-size: 80px; font-weight: bold; text-align: left; color: #384E77; display: block; margin: 10px 130px; font-family: 'MapoPeacefull'; position: relative; top: 30px; width: 500px;}
+            .main_head:nth-child(3) { top: -85px; left: 500px; }
+            #keySet button { width: 200px; }
+            #logout button { width: 200px; }
+            #keySet {position:relative; left: 1050px; top: -150px; }
+            #logout {position: relative; left: 1050px; top: -150px; }
+            button { text-align: center; font-size: 24px; padding: 5px 10px; margin: 10px; border-radius:5px; background-color: #A0EADE; color: #384E77; border-style: none; font-family: 'MapoPeacefull'; }
+            h2 { margin: 10px 70px; font-size: 30px; color: #384E77; font-family: 'MapoPeacefull'; position: relative; width: 200px; top: -150px; left: 40px;}
+            #keyword_section { visibility: hidden; padding: 10px 0 0 20px; position: relative; left: 100px; top: -160px; display: inline-block; width: 800px;}
+            #keyword_section * {font-family: 'MapoPeacefull';}
+            .card { margin: 0 0 20px 50px; display: none; }
+            #noSearchResult {display: none; font-size: 22px; color: #384E77;}
+            #results {display: grid; position: absolute; top: 450px; left: 60px;}
+
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='image/white.jpeg') }}" id='whiteImg'>
+        <h1 class='main_head'>'{{msg}}'님</h1>
+        <h1 class='main_head'>환영합니다!</h1>
+        <a href="{{ url_for('keyword') }}" id="keySet"><button>키워드 등록</button></a>
+        <a href="{{ url_for('logout') }}" id="logout"><button>로그아웃</button></a>
+    </header>
+    <nav>
+    
+    </nav>
+    <section>
+        <h2>- 키워드 목록</h2>
+        <div id="keyword_section">
+            {% for keyword in keywords %}
+            <button class='textBtn' id='text1' disabled>{{ keyword[0] }}</button>
+            <button class='textBtn' id='text2' disabled>{{ keyword[1] }}</button>
+            <button class='textBtn' id='text3' disabled>{{ keyword[2] }}</button>
+            <button class='textBtn' id='text4' disabled>{{ keyword[3] }}</button>
+            <button class='textBtn' id='text5' disabled>{{ keyword[4] }}</button>
+            <button class='textBtn' id='text6' disabled>{{ keyword[5] }}</button>
+            <button class='textBtn' id='text7' disabled>{{ keyword[6] }}</button>
+            <button class='textBtn' id='text8' disabled>{{ keyword[7] }}</button>
+            <button class='textBtn' id='text9' disabled>{{ keyword[8] }}</button>
+            <button class='textBtn' id='text10' disabled>{{ keyword[9] }}</button>
+            {% endfor %}
+        </div>
+        
+        <div id='results'>
+            <div id='noSearchResult'></div>
+            <div class="card">
+                <div><img src="#" id='img0'></div>
+                <div id="book0"></div>
+            </div>
+            <div class="card">
+                <div><img src="#" id='img1'></div>
+                <div id="book1"></div>
+            </div>
+            <div class="card">
+                <div><img src="#" id='img2'></div>
+                <div id="book2"></div>
+            </div>
+            <div class="card">
+                <div><img src="#" id='img3'></div>
+                <div id="book3"></div>
+            </div>
+            <div class="card">
+                <div><img src="#" id='img4'></div>
+                <div id="book4"></div>
+            </div>
+            <div class="card">
+                <div><img src="#" id='img5'></div>
+                <div id="book5"></div>
+            </div>
+            <div class="card">
+                <div><img src="#" id='img6'></div>
+                <div id="book6"></div>
+            </div>
+            <div class="card">
+                <div><img src="#" id='img7'></div>
+                <div id="book7"></div>
+            </div>
+        </div>
+
+    </section>
+    <aside>
+
+    </aside>
+    <footer>
+
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var btn = $('.textBtn');
+        $(document).ready(function(){
+            for(var i=0; i<10; i++){
+                var nBtn = $('.textBtn').eq(i);
+                if(nBtn.text() == []){
+                    nBtn.attr('disabled', true);
+                }else{
+                    nBtn.attr('disabled', false);
+                    nBtn.css('visibility','visible');
+                }
+            }
+        })
+
+        $('.textBtn').on('click', function(){
+            var idx = $(this).index() + 10;
+            var text = btn.eq(idx).text();
+            if (text == '[]'){
+                for(var i=0; i<8; i++){
+                    $('#noSearchResult').css('display','block');
+                    $('.card').css('display','none');
+                    document.getElementById('img'+i).src = '#';
+                    $('#book'+i).empty();
+                }
+                $('#noSearchResult').empty();
+                $('#noSearchResult').append("검색한 키워드로 등록된 책이 없습니다.");
+                $('#noSearchResult').css({'padding':'20px 0 0 30px', 'font-weight':'bold'});
+            }else{
+                $('.card').css('display','inline-flex');
+                $('#noSearchResult').css('display','none');
+                var splitTexts = text.split('], [');
+                var booksImg = [[],[],[],[],[],[],[],[]];
+                var books = [[],[],[],[],[],[],[],[]];
+                for(var i=0; i<8; i++){
+                    if (splitTexts[i] != null){
+                        var bookImg = splitTexts[i].split("', '")[0].replace('[[','').replace("'","");
+                        var book = splitTexts[i].split("', '")[1].replace("'","");
+                        var about = splitTexts[i].split("', '")[2];
+                        var store = splitTexts[i].split("', '")[3].replace("'","").replace(']]','');
+                        booksImg[i].push(bookImg);
+                        books[i].push(book+"<br><br>");
+                        books[i].push(about+"<br><br>");
+                        books[i].push(store);
+                    }
+                }
+                for (var i=0; i<8; i++){
+                    document.getElementById('img'+i).style.display = 'block';
+                    document.getElementById('img'+i).src = booksImg[i];
+                    if (screen.width >= 1024){
+                        document.getElementById('img'+i).width = '240';
+                        document.getElementById('img'+i).height = '330';
+                    }else if (screen.width < 1024){
+                        document.getElementById('img'+i).width = '120';
+                        document.getElementById('img'+i).height = '180';
+                    }
+                    
+                }
+                for (var i=0; i<8; i++){
+                    $('#book'+i).empty();
+                    if (books[i] != ''){    
+                        $('#book'+i).append(books[i]);
+                        if (screen.width >= 1024){
+                            $('#book'+i).css({'font-size':'20px', 'display':'block', 'background-color':'#A0EADE', 'color':'#384E77', 'font-weight':'bold','font-family':'MapoPeacefull','width':'1000px', 'margin':'0 0 0 10px'});
+                        }else if (screen.width < 1024){
+                            $('#book'+i).css({'font-size':'16px', 'display':'block', 'background-color':'#A0EADE', 'color':'#384E77', 'font-weight':'normal','font-family':'MapoPeacefull','width':'210px', 'margin':'0 0 0 7px'});
+                        }
+                    }else{
+                        document.getElementById('img'+i).style.display = 'none';
+                    }
+                }
+            }
+            
+        })
+
+        function doNotReload(){
+            if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
+                event.keyCode = 0;
+                event.cancelBubble = true;
+                event.returnValue = false;
+            }
+        }
+        document.onkeydown = doNotReload;
+    </script>
+</body>
+{% endblock %}
